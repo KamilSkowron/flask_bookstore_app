@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}
+Base Books
+{% endblock %}
+{% block content %}
+
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+	<div class="col">
+		<h2>Książki dostępne w repozytorium</h2>
+
+		<br>
+
+		<form method="POST">
+			<table>
+				<tr>
+					<th>
+						{{ form.title.label() }}
+					</th>
+					<th>
+						{{ form.authors.label() }}
+					</th>
+					<th>
+						{{ form.publishedDateOD.label() }}
+					</th>
+					<th>
+						{{ form.publishedDateDO.label() }}
+					</th>
+					<th>
+						{{ form.language.label() }}
+					</th>
+				</tr>
+				<tr>
+					<th>
+						{{ form.title(class="form-control", placeholder="Nazwa") }}
+					</th>
+					<th>
+						{{ form.authors(class="form-control", placeholder="Imię Nazwisko") }}
+					</th>
+					<th>
+						{{ form.publishedDateOD(class="form-control", placeholder="Rok") }}
+
+					</th>
+					<th>
+						{{ form.publishedDateDO(class="form-control", placeholder="Rok") }}
+					</th>
+					<th>
+						{{ form.language(class="form-control", placeholder="pl") }}
+					</th>
+					<th>
+						<input id="search_book" name="search_book" , type="hidden">
+						{{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+					</th>
+				</tr>
+
+
+
+			</table>
+
+		</form>
+		</table>
+		<br>
+		<table class="table table-hover table-dark">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Title</th>
+					<th scope="col">Authors</th>
+					<th scope="col">Publication Date</th>
+					<th scope="col">Identifier</th>
+					<th scope="col">Page Count</th>
+					<th scope="col">Image Link</th>
+					<th scope="col">Language</th>
+					<th scope="col">Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for book in books %}
+				{% include 'includes/books_modals.html' %}
+				<tr>
+					<td>{{ book.id }}</td>
+					<td>{{ book.title }}</td>
+					<td>{{ book.authors }}</td>
+					<td>
+						{% if book.publishedDate != 0 %}
+						{{ book.publishedDate }}
+						{% endif%}
+					</td>
+					<td>{{ book.identifier }}</td>
+					<td>{{ book.pageCount }}</td>
+					<td>{{ book.imageLinks }}</td>
+					<td>{{ book.language }}</td>
+					<td>
+						<button class="btn btn-outline btn-warning" data-toggle="modal"
+							data-target="#Modal-EditBook-{{ book.id }}">Edytuj</button>
+						<button class="btn btn-outline btn-danger" data-toggle="modal"
+							data-target="#Modal-DeleteBook-{{ book.id }}">Usuń</button>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,135 @@
+<style>
+  .modal-content {
+    background-color: #143d59
+  }
+</style>
+
+
+<!-- Edit Confirm -->
+<div class="modal fade" id="Modal-EditBook-{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <!-- -->
+          {{ book.title }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+
+          {{ edit_form.hidden_tag() }}
+
+          <h4 class="text">
+            <div class="modal-body">
+              Autor:
+              {{ book.authors }}
+            </div>
+            <div class="modal-body">
+              Data publikacji:
+              {{ book.publishedDate }}
+            </div>
+            <div class="modal-body">
+              Identyfikator:
+              {{ book.identifier }}
+            </div>
+            <div class="modal-body">
+              Liczba stron:
+              {{ book.pageCount }}
+            </div>
+            <div class="modal-body">
+              Link do okładki:
+              {{ book.imageLinks }}
+            </div>
+            <div class="modal-body">
+              Język:
+              {{ book.language }}
+            </div>
+
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Na pewno?
+          </h6>
+          <br>
+          <input id="edit_book" name="edit_book" , type="hidden" , value="{{ book.id }}">
+          {{ edit_form.submit(class=" btn btn-outline-warning btn-block") }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Confirm -->
+<div class="modal fade" id="Modal-DeleteBook-{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <!-- -->
+          {{ book.title }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+
+          {{ delete_form.hidden_tag() }}
+
+          <h4 class="text">
+            <div class="modal-body">
+              Autor:
+              {{ book.authors }}
+            </div>
+            <div class="modal-body">
+              Data publikacji:
+              {{ book.publishedDate }}
+            </div>
+            <div class="modal-body">
+              Identyfikator:
+              {{ book.identifier }}
+            </div>
+            <div class="modal-body">
+              Liczba stron:
+              {{ book.pageCount }}
+            </div>
+            <div class="modal-body">
+              Link do okładki:
+              {{ book.imageLinks }}
+            </div>
+            <div class="modal-body">
+              Język:
+              {{ book.language }}
+            </div>
+
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Na pewno?
+          </h6>
+          <br>
+          <input id="delete_book" name="delete_book" , type="hidden" , value="{{ book.id }}">
+          {{ delete_form.submit(class=" btn btn-outline-danger btn-block") }}
+        </form>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

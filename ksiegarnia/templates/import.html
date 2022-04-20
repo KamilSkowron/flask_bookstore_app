@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+Import Page
+{% endblock %}
+{% block content %}
+
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+	<div class="col">
+		<h2>Książki dostępne w repozytorium</h2>
+		<p>Jeżeli chcesz zaimportować nowe tytułu, wpisz wyszukiwaną frazę</p>
+
+		<form method="POST">
+			<input name="text">
+			<input type="submit">
+		</form>
+
+	</div>
+</div>
+{% endblock %}

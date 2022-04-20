@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Book
+{% endblock %}
+
+{% block content %}
+
+<body class="text-center">
+	<div class="container">
+		<form method="POST" class="form-signin" style="color:#f4b41a">
+			{{ form.hidden_tag() }}
+
+			<h1 class="h3 mb-3 font-weight-normal">
+				Add Book
+			</h1>
+			<br>
+			{{ form.title.label() }}
+			{{ form.title(class="form-control", placeholder="Tytuł") }}
+
+			{{ form.authors.label() }}
+			{{ form.authors(class="form-control", placeholder="Autor") }}
+
+			{{ form.publishedDate.label() }}
+			{{ form.publishedDate(class="form-control", placeholder="Data publikacji") }}
+
+			{{ form.identifier.label() }}
+			{{ form.identifier(class="form-control", placeholder="Indentyfikator") }}
+
+			{{ form.pageCount.label() }}
+			{{ form.pageCount(class="form-control", placeholder="Liczba stron") }}
+
+			{{ form.imageLinks.label() }}
+			{{ form.imageLinks(class="form-control", placeholder="Link do zdjęcia") }}
+
+			{{ form.language.label() }}
+			{{ form.language(class="form-control", placeholder="Język") }}
+
+
+			<br>
+
+			{{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+		</form>
+	</div>
+</body>
+{% endblock %}
